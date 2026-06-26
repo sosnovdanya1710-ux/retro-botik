@@ -1,0 +1,16 @@
+name: Bot Trigger
+on:
+  repository_dispatch:
+    types: [start_event]
+  workflow_dispatch:
+
+jobs:
+  run_bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: pip install pyTelegramBotAPI
+      - name: Run Bot
+        run: python bot.py
+        
